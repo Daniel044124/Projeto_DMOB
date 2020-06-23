@@ -11,8 +11,10 @@ const Home = () => {
     }
     function hundleNavegador() {
       navigation.navigate('Navegador');
-  }
-
+    }
+    function hundleAgenda() {
+      navigation.navigate('Agenda');
+    }
     return (
     <ImageBackground source={require('../../assets/unieuro.png')} style={styles.container} resizeMode="repeat">
         <View style={styles.main}>
@@ -29,14 +31,14 @@ const Home = () => {
                     Navegador
                 </Text>
             </RectButton>
-            <RectButton style={styles.button} onPress={() => {}}>
+            <RectButton style={styles.button} onPress={hundleAgenda}>
                 <Text style={styles.buttonText}>
                     Agenda
                 </Text>
             </RectButton>            
         </View>
     </ImageBackground> 
-    );
+    )
 }
 
 const styles = StyleSheet.create({

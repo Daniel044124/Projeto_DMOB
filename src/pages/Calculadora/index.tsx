@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, Alert } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, TextInput, Image, Alert } from 'react-native';
 import { RectButton} from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 
@@ -29,11 +29,13 @@ function dividir() {
     if(segundo <= primeiro){
         setResultado(primeiro/segundo)
     }else{
-        Alert.alert('Imposivel a divisão');
+        Alert.alert('Dividendo Menor que o divisior!! Informe uma divisão valida');
     }
 }
 
     return(
+        <>
+        <ImageBackground source={require('../../assets/react.jpeg')} style={styles.img} resizeMode="repeat">
         <View>
             <RectButton style={styles.button} onPress={hundleVoltar}>
                 <Text style={styles.buttonText}>
@@ -43,17 +45,6 @@ function dividir() {
             <Text style={styles.title}>
                 Calculadora
             </Text>
-            <View style={styles.campoContainer}>
-                <TextInput style={styles.campo} 
-                keyboardType="decimal-pad"
-                onChangeText={text => setPrimeiro(Number(text))}
-                />
-
-                <TextInput style={styles.campo} 
-                keyboardType="decimal-pad"
-                onChangeText={text => setSegundo(Number(text))}
-               />                    
-            </View>
             <View style={styles.buttonContainer}>
                 <RectButton style={styles.buttonCalc} onPress={subtrair}>
                     <Text style={styles.buttonText}>
@@ -76,24 +67,54 @@ function dividir() {
                     </Text>
                 </RectButton>
             </View>
+            
+            
+            <View style={styles.campoContainer}>
+                <TextInput style={styles.campo} 
+                keyboardType="decimal-pad"
+                onChangeText={text => setPrimeiro(Number(text))}
+                />
+                <TextInput style={styles.campoB} 
+                keyboardType="decimal-pad"
+                onChangeText={text => setSegundo(Number(text))}
+               />                    
+            </View>
+            <View style={styles.campoContaineresult}>
+
             <Text style={styles.resultado}>
                 {result}
             </Text>
+
+            </View>
+            
+           
+            
         </View>
+        </ImageBackground>
+        </>
     );
 }
 
 const styles = StyleSheet.create({
+
+        img: {
+        flex: 1,
+        backgroundColor:'#f0f0f5',
+        left: -4,
+        paddingHorizontal: 10,
+
+      },
+   
     voltar: {
         marginTop: 30,
         fontSize: 40,
-        color: '#4169e1',
+        color: '#FFFFFF',
     },
 
     button: {
         backgroundColor: '#4169e1',
-        height: 60,
-        width: 90,
+        height: 30,
+        width: 70,
         flexDirection: 'row',
         borderRadius: 10,
         overflow: 'hidden',
@@ -101,7 +122,7 @@ const styles = StyleSheet.create({
         marginTop: 40,
     },
     resultado:{ 
-        backgroundColor: '#4169e1',
+        backgroundColor:'#4169e1',
         height: 80,
         width: 300,
         borderColor: '#FFF',
@@ -111,7 +132,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 24,
         fontSize:50,
         marginLeft: 50,
-        
     },
     buttonText: {
         flex: 1,
@@ -131,35 +151,59 @@ const styles = StyleSheet.create({
       marginRight: 'auto',   
     },
     buttonCalc: {
+
         backgroundColor: '#4169e1',
-        height: 60,
+        height: 58,
         width: 90,
         flexDirection: 'row',
-        borderRadius: 10,
+        borderRadius: 60,
         overflow: 'hidden',
         alignItems: 'center',
-        marginTop: 40,
+        marginTop: 30,
         marginLeft: 5,
     },
     buttonContainer: {
         flexDirection: 'row',
-        marginTop: 16,
-        marginBottom: 32,
+        marginTop: 2,
+        marginBottom: 20,
     },
     campo: {
         backgroundColor: '#4169e1',
         height: 80,
-        width: 300,
+        width: 150,
         borderColor: '#FFF',
-        borderRadius: 10,
+        borderRadius: 5,
         textAlign: 'center',
         marginBottom: 8,
         paddingHorizontal: 24,
         fontSize:50,
-        marginLeft: 50
-    },
-    campoContainer:{
+        marginLeft: 10,
         marginTop: 10,
+    },
+
+    campoB: {
+        backgroundColor: '#4169e1',
+        height: 80,
+        width: 150,
+        borderColor: '#FFF',
+        borderRadius: 5,
+        textAlign: 'center',
+        marginBottom: 8,
+        paddingHorizontal: 24,
+        fontSize:50,
+        marginLeft: 5,
+        marginTop: 10,
+    },
+
+    campoContainer:{
+        marginTop: -1,
+        flex: 1,
+        flexDirection:'row',
+        justifyContent:'space-around'
+    },
+    campoContaineresult:{
+        marginTop: 100,
+
     },
     item: {
         backgroundColor: '#fff',
