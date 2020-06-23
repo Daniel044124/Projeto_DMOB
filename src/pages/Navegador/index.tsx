@@ -51,7 +51,7 @@ const Navegador = () => {
             fontSize:20,
             marginLeft: 0,
             marginTop: 40,
-            marginRight: 90,
+            marginRight: 20,
         },
         container:{
             width: '100%',
