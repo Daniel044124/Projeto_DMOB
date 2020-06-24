@@ -26,10 +26,10 @@ function multiplicar() {
 
 }
 function dividir() {
-    if(segundo <= primeiro){
+    if(segundo != 0){
         setResultado(primeiro/segundo)
     }else{
-        Alert.alert('Dividendo Menor que o divisior!! Informe uma divisão valida');
+        Alert.alert('Divisor igual a 0!! Informe uma divisão valida');
     }
 }
 
